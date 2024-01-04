@@ -2,21 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 객체 생성, 주입 -->
-	<!-- 클래스명 변수명 = new 생성자() -->
-	<!-- new 생성자()                          클래스 변수명 -->			
-	<bean class="com.winter.app.ioc.LeftArm" id="leftArm"></bean>
-	<bean class="com.winter.app.ioc.RightArm" id="rightArm"></bean>
-	<bean class="com.winter.app.ioc.Robot" id="robot">
-		<!-- 매개변수 name, type, indexNum -->
-		<constructor-arg type="com.winter.app.ioc.LeftArm" ref="leftArm"></constructor-arg>
-		<constructor-arg type="com.winter.app.ioc.RightArm" ref="rightArm"></constructor-arg>
-		<!-- setter -->
-		<!-- setLeftArm() -->
-		<property name="leftArm" ref="leftArm"></property>
-		<!-- setRightArm() -->
-		<property name="rightArm" ref="rightArm"></property>
-	</bean>
+
 </beans>
