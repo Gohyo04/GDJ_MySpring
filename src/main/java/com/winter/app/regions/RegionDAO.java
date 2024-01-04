@@ -2,71 +2,34 @@ package com.winter.app.regions;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.winter.app.util.DBConnector;
 
 @Repository
 public class RegionDAO {
+
+	@Autowired
+	private SqlSession sqlSession;
+	
+	private final String namespace="com.winter.app.regions.RegionDAO.";
 	
 	public RegionDTO getDetail(RegionDTO regionDTO) throws Exception{
-		Connection con = DBConnector.getConnector();
-		
-		String sql = "SELECT * FROM REGIONS WHERE REGION_ID =?";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		// ? 값 세팅
-		ps.setInt(1, regionDTO.getRegion_id());
-		
-		ResultSet rs = ps.executeQuery();
-	
-		RegionDTO rdto = null;
-		if(rs.next()) {
-			rdto = new RegionDTO(); 
-			rdto.setRegion_id(rs.getInt("REGION_ID"));
-			rdto.setRegion_name(rs.getString("REGION_NAME"));
-		}
-		DBConnector.disConnect(ps, con);
-		return rdto;
+		return sqlSession.selectOne(namespace+"getDetail", regionDTO);
 	}
 	
-	public ArrayList<RegionDTO> getList() throws Exception{
-		
-		Connection con =  DBConnector.getConnector();
-			
-		// 3. Sql(query)문 생성 ( ; 생략 )
-		String sql = "SELECT * FROM REGIONS";
-		
-		// 4. SQL문 미리 전송
-		PreparedStatement ps = con.prepareStatement(sql);
-		
-		// 5. 
-		
-		// 6. 최종 전송 및 결과 처리
-		ResultSet rs = ps.executeQuery();
-		ArrayList<RegionDTO> arr = new ArrayList<RegionDTO>();
-		while(rs.next()) { // rs 값이있으면 true / 아니면 false
-			RegionDTO rdto = new RegionDTO();
-			// rs = 1, Europe
-			rdto.setRegion_id(rs.getInt("REGION_ID"));
-			rdto.setRegion_name(rs.getString("REGION_NAME"));
-			arr.add(rdto);
-		}
-		// 연결확인
-		System.out.println(con);
-		// 연결헤제
-		DBConnector.disConnect(rs, ps, con);
-		return arr; 
+	public List<RegionDTO> getList() throws Exception{
+		return sqlSession.selectList(namespace+"getList");	 
 	}
 	
 	// Insert
 	public int add(RegionDTO rdto) throws Exception{
 		Connection con = DBConnector.getConnector();
 		String sql = "INSERT INTO REGIONS VALUES (?,?)";
-		
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, rdto.getRegion_id());
