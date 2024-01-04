@@ -1,4 +1,4 @@
-package com.gohyo.app.util;
+package com.winter.app.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

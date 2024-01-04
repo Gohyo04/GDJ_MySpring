@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.gohyo.app.util.DBConnector;
+import org.springframework.stereotype.Repository;
 
+import com.winter.app.util.DBConnector;
+
+@Repository
 public class RegionDAO {
 	
 	public RegionDTO getDetail(RegionDTO regionDTO) throws Exception{

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/regions/*")	// default method = get
 public class RegionController {
 	
+	@Autowired
 	private RegionDAO regionDAO;
-	
-	public RegionController () {
-		this.regionDAO = new RegionDAO();
-	}
 	
 	// 오버로딩
 	@RequestMapping(value="add", method = RequestMethod.POST)

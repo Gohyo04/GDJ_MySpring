@@ -22,11 +22,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="requestScope.list", var="dto">
+			<c:forEach items="${requestScope.list}" var="dto">
 				<tr>
-					<td>${pageScope.country_id}</td>
-					<td>${pageScope.country_name}</td>
-					<td>${pageScope.region_id}</td>
+					<td>${dto.country_id}</td>
+					<td><a href="./detail?country_id=${dto.country_id}">${dto.country_name}</a></td>
+					<td>${dto.region_id}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

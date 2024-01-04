@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.gohyo.app.util.DBConnector;
+import com.winter.app.util.DBConnector;
 
 public class CountryDAO {
 	
