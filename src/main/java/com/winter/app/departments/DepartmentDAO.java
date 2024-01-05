@@ -31,34 +31,15 @@ public class DepartmentDAO {
 	
 	// Insert
 	public int add(DepartmentDTO ddto) throws Exception{
-		Connection con = DBConnector.getConnector();
-		String sql = "INSERT INTO DEPARTMENTS VALUES (?,?,?,?)";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, ddto.getDepartment_id());
-		ps.setString(2, ddto.getDepartment_name());
-		ps.setInt(3, ddto.getManager_id());
-		ps.setInt(4, ddto.getLocation_id());
-		
-		int result = ps.executeUpdate();
-		DBConnector.disConnect(ps, con);
-		return result;
+		return sqlSession.insert(namespace+"add", ddto);
 	}
 	
 	
 	public int update(DepartmentDTO ddto) throws Exception{
-		Connection con = DBConnector.getConnector();
-		String sql = "UPDATE DEPARTMENTS SET DEPARTMENT_NAME = ?, MANAGER_ID = ?, LOCATION_ID = ? WHERE DEPARTMENT_ID = ?";
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, ddto.getDepartment_name());
-		ps.setInt(2, ddto.getManager_id());
-		ps.setInt(3, ddto.getLocation_id());
-		ps.setInt(4, ddto.getDepartment_id());
-		
-		int result = ps.executeUpdate();
-		
-		DBConnector.disConnect(ps, con);
-		return result;
+		return sqlSession.update(namespace+"update", ddto);
+	}
+	
+	public int delete(DepartmentDTO ddto) throws Exception{
+		return sqlSession.delete(namespace+"delete",ddto);
 	}
 }

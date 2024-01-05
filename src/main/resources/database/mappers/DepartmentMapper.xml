@@ -6,11 +6,24 @@
   
   <!-- mapper namespace는 비우면 에러 -->
   <mapper namespace="com.winter.app.departments.DepartmentDAO">
-		<select id="getDetail" resultType="com.winter.app.departments.DepartmentDTO" parameterType="com.winter.app.departments.DepartmentDTO">
+  		
+  		<update id="update" parameterType="DepartmentDTO">
+  			UPDATE DEPARTMENTS SET DEPARTMENT_NAME = #{department_name} WHERE DEPARTMENT_ID = #{department_id} 
+  		</update>
+  		
+  		<delete id="delete" parameterType="DepartmentDTO">
+  			DELETE DEPARTMENTS WHERE DEPARTMENT_ID = #{department_id}
+  		</delete>
+  		
+  		<insert id="add" parameterType="DepartmentDTO">
+  			INSERT INTO DEPARTMENTS VALUES(#{department_id}, #{department_name}, #{manager_id}, #{location_id})
+  		</insert>
+  
+		<select id="getDetail" resultType="DepartmentDTO" parameterType="DepartmentDTO">
   			SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = #{department_id}
   		</select>
   		
-  		<select id="getList" resultType="com.winter.app.departments.DepartmentDTO">
+  		<select id="getList" resultType="DepartmentDTO">
   			SELECT * FROM DEPARTMENTS
   		</select>
   </mapper>

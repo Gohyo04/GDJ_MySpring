@@ -1,5 +1,8 @@
 package com.winter.app.countries;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CountryDTO {
 	private String country_id;
 	private String country_name;

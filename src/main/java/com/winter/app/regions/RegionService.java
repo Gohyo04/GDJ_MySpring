@@ -14,9 +14,24 @@ public class RegionService {
 	
 	// list
 	public List<RegionDTO> getList() throws Exception{
-		List<RegionDTO> ar = this.regionDAO.getList();
-		
+		List<RegionDTO> ar = this.regionDAO.getList();	
 		return ar;
 	}
 	
+	// detail
+	public RegionDTO getDetail(RegionDTO regionDTO) throws Exception{
+		return regionDAO.getDetail(regionDTO);
+	}
+	
+	public int add(RegionDTO regionDTO) throws Exception{
+		return regionDAO.add(regionDTO);
+	}
+	
+	public int update(RegionDTO regionDTO) throws Exception{
+		return regionDAO.update(regionDTO);
+	}
+	
+	public int delete(RegionDTO regionDTO) throws Exception{
+		return regionDAO.delete(regionDTO);
+	}
 }
