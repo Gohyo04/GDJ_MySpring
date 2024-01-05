@@ -37,18 +37,9 @@ public class RegionDAO {
 		return sqlSession.update(namespace+"update",regionDTO);
 	}
 	
+	// Delete
 	public int delete(RegionDTO regionDTO) throws Exception{
 		return sqlSession.delete(namespace+"delete",regionDTO);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
