@@ -1,41 +1,38 @@
 package com.gohyo.app.product;
 
+import java.sql.Date;
+
 public class ProductDTO {
-	private Long productNum;
-	private String productName;
-	private String productContents;
-	private double productRate;
-	private double productJumsu;
 	
-	public Long getProductNum() {
-		return productNum;
+	private Long no;
+	private String title;
+	private String writer;
+	private Date day;
+	
+	public Long getNo() {
+		return no;
 	}
-	public void setProductNum(Long productNum) {
-		this.productNum = productNum;
+	public void setNo(Long no) {
+		this.no = no;
 	}
-	public String getProductName() {
-		return productName;
+	public String getTitle() {
+		return title;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getProductContents() {
-		return productContents;
+	public String getWriter() {
+		return writer;
 	}
-	public void setProductContents(String productContents) {
-		this.productContents = productContents;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
-	public double getProductRate() {
-		return productRate;
+	public Date getDay() {
+		return day;
 	}
-	public void setProductRate(double productRate) {
-		this.productRate = productRate;
+	public void setDay(Date day) {
+		this.day = day;
 	}
-	public double getProductJumsu() {
-		return productJumsu;
-	}
-	public void setProductJumsu(double productJumsu) {
-		this.productJumsu = productJumsu;
-	}
-		
+	
+	
 }

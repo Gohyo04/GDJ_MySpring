@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ProductDAO {
 	
 	@Autowired
@@ -17,8 +19,7 @@ public class ProductDAO {
 	}
 	
 	public ProductDTO getDetail(ProductDTO productDTO) {
-		
-		return null;
+		return sqlSession.selectOne(namespace+"getDetail");
 	}
 		
 	public int doAdd(ProductDTO productDTO) {

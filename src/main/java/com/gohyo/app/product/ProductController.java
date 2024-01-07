@@ -20,7 +20,6 @@ public class ProductController {
 	
 	@RequestMapping(value="list", method = RequestMethod.GET)
 	public ModelAndView list(ModelAndView mv) {
-		
 		List<ProductDTO> ar = productService.getList();
 		mv.addObject("list", ar);
 		mv.setViewName("products/list");
@@ -28,10 +27,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="detail", method = RequestMethod.GET)
-	public Model detail(HttpServletRequest request) {
-		ProductDAO productDAO = new ProductDAO();
+	public ModelAndView detail(ProductDTO pdto, ModelAndView mv) {
+		pdto = productService.getDetail(pdto);
 		
-		
-		return null;
+		mv.addObject("dto",pdto);
+		mv.setViewName("product/detail");
+		return mv;
 	}
 }
