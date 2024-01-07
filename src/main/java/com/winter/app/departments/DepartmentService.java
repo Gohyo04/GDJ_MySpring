@@ -3,7 +3,9 @@ package com.winter.app.departments;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DepartmentService {
 	
 	@Autowired
@@ -14,7 +16,7 @@ public class DepartmentService {
 	}
 	
 	public List<DepartmentDTO> getList() throws Exception{
-		return departmentDAO.getList();
+		return this.departmentDAO.getList();
 	}
 	
 	public int add(DepartmentDTO departmentDTO) throws Exception{
