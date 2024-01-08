@@ -48,6 +48,4 @@ public class Pager {
 	public void setPage(Long page) {
 		this.page = page;
 	}
-	
-	
 }
