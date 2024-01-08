@@ -1,14 +1,15 @@
 package com.winter.app.regions;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.winter.app.util.Pager;
 
 @Controller
 @RequestMapping(value="/regions/*")	// default method = get
@@ -18,9 +19,9 @@ public class RegionController {
 	private RegionService  regionService;
 	
 	@RequestMapping(value="list", method = RequestMethod.GET)
-	public ModelAndView list() throws Exception{
+	public ModelAndView list(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<RegionDTO> ar = regionService.getList();
+		List<RegionDTO> ar = regionService.getList(pager);
 		
 		mv.addObject("list", ar);
 		mv.setViewName("regions/list");
