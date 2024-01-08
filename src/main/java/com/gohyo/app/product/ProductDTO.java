@@ -4,35 +4,44 @@ import java.sql.Date;
 
 public class ProductDTO {
 	
-	private Long no;
-	private String title;
-	private String writer;
-	private Date day;
+	private Long productNum;
+	private String productName;
+	private String productContents;
+	private Double productRate;
+	private Double productJumsu;
 	
-	public Long getNo() {
-		return no;
+	
+	public Long getProductNum() {
+		return productNum;
 	}
-	public void setNo(Long no) {
-		this.no = no;
+	public void setProductNum(Long productNum) {
+		this.productNum = productNum;
 	}
-	public String getTitle() {
-		return title;
+	public String getProductName() {
+		return productName;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	public String getWriter() {
-		return writer;
+	public String getProductContents() {
+		return productContents;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setProductContents(String productContents) {
+		this.productContents = productContents;
 	}
-	public Date getDay() {
-		return day;
+	public Double getProductRate() {
+		return productRate;
 	}
-	public void setDay(Date day) {
-		this.day = day;
+	public void setProductRate(Double productRate) {
+		this.productRate = productRate;
 	}
+	public Double getProductJumsu() {
+		return productJumsu;
+	}
+	public void setProductJumsu(Double productJumsu) {
+		this.productJumsu = productJumsu;
+	}
+	
 	
 	
 }

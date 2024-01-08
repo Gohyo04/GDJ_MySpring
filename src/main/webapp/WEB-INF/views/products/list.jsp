@@ -11,23 +11,23 @@
 <body>
 	<c:import url="../temps/header.jsp"></c:import>
 		<div class="mx-auto p-2 w-75">
-		<h1 class="mx-auto py-5" style="width: 200px;">NOTICE</h1>
+		<h1 class="mx-auto py-5" style="width: 200px;">PRODUCT</h1>
 		<table class="table">
 		<thead class="table-dark">
 			<tr>
-				<th>NO</th>
-				<th>TITLE</th>
-				<th>WRITER</th>
-				<th>day</th>
+				<th>Num</th>
+				<th>Name</th>
+				<th>Rate</th>
+				<th>Jumsu</th>
 			</tr>
 		</thead>
 		<tbody class="table-group-divider">
 			<c:forEach items="${requestScope.list}" var="dto">
 				<tr>
-					<td>${dto.no}</td>
-					<td class="col-6"><a href="./detail?no=${dto.no}">${dto.title}</a></td>
-					<td>${dto.writer}</td>
-					<td>${dto.day}</td>
+					<td>${dto.productNum}</td>
+					<td class="col-6"><a href="./detail?no=${dto.productNum}">${dto.productName}</a></td>
+					<td>${dto.productRate}</td>
+					<td>${dto.productJumsu}</td>
 				</tr>
 			</c:forEach>	
 		</tbody>

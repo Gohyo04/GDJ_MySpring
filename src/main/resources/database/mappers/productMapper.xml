@@ -7,10 +7,10 @@
   <!-- mapper namespace는 비우면 에러 -->
   <mapper namespace="com.gohyo.app.product.ProductDAO">
   	<select id="getList" resultType="ProductDTO">
-  		SELECT * FROM NOTICE
+  		SELECT * FROM PRODUCT
   	</select>
   	
   	<select id="getDetail" resultType="ProductDTO" parameterType="ProductDTO">
-  		SELECT * FROM NOTICE WHERE NO = #{no}
+  		SELECT * FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
   	</select>
   </mapper>
