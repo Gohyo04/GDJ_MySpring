@@ -23,6 +23,7 @@ public class RegionController {
 		ModelAndView mv = new ModelAndView();
 		List<RegionDTO> ar = regionService.getList(pager);
 		
+		mv.addObject("pager",pager);
 		mv.addObject("list", ar);
 		mv.setViewName("regions/list");
 		

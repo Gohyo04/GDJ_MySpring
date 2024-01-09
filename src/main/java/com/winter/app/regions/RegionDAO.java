@@ -35,6 +35,11 @@ public class RegionDAO {
 		return sqlSession.update(namespace+"update",regionDTO);
 	}
 	
+	// Count
+	public Long getTotal(Pager pager) throws Exception{
+		return sqlSession.selectOne(namespace+"getTotal", pager);
+	}
+	
 	// Delete
 	public int delete(RegionDTO regionDTO) throws Exception{
 		return sqlSession.delete(namespace+"delete",regionDTO);
