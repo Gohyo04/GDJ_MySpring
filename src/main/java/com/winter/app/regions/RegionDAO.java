@@ -24,6 +24,10 @@ public class RegionDAO {
 		return sqlSession.selectList(namespace+"getList", pager);	 
 	}
 	
+	public int addFile(RegionFileDTO regionFileDTO) throws Exception{
+		return sqlSession.insert(namespace+"addFile", regionFileDTO);
+	}
+	
 	// Insert
 	public int add(RegionDTO rdto) throws Exception{
 		

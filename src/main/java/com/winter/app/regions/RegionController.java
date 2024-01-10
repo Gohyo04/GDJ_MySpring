@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winter.app.util.Pager;
@@ -47,9 +48,9 @@ public class RegionController {
 	}
 	
 	@RequestMapping(value="add", method = RequestMethod.POST)
-	public ModelAndView add(RegionDTO regionDTO, ModelAndView mv) throws Exception{
-		int result = regionService.add(regionDTO);
-		
+	public ModelAndView add(RegionDTO regionDTO, ModelAndView mv, MultipartFile photo) throws Exception{
+		int result = regionService.add(regionDTO, photo);
+
 		String msg = "등록실패";
 		if(result > 0) {
 			msg = "등록성공";

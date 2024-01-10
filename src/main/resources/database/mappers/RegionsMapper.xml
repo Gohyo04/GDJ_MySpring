@@ -62,6 +62,11 @@
   		UPDATE REGIONS SET REGION_NAME = #{region_name} WHERE REGION_ID = #{region_id}  
   	</update>
   
+  	<!-- AddFile -->
+  	<insert id="addFile" parameterType="RegionFileDTO">
+  		INSERT INTO REGIONFILES VALUES (FILE_SEQ.NEXTVAL, #{region_id}, #{fileName}, #{oriName});
+  	</insert>
+  
   	<!-- Insert -->
   	<insert id="add" parameterType="RegionDTO">
   		INSERT INTO REGIONS VALUES(EMPLOYEES_SEQ.NEXTVAL,#{region_name})

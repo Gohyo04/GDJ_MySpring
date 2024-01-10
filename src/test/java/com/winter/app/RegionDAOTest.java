@@ -69,5 +69,5 @@ public class RegionDAOTest extends MyTest{
 //		
 //		assertEquals(1,result);
 //	}
-
+	
 }
