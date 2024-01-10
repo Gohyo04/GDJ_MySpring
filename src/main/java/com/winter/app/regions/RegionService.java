@@ -42,6 +42,7 @@ public class RegionService {
 	
 	// Add
 	public int add(RegionDTO regionDTO, MultipartFile file) throws Exception{
+		int result = regionDAO.add(regionDTO);
 		// 1. 어디에 저장할것인가
 		String path = servletContext.getRealPath("/resources/upload");
 		System.out.println(path);
@@ -56,10 +57,10 @@ public class RegionService {
 			// a. 시간 사용
 		Calendar ca = Calendar.getInstance();
 		String fileName = ca.getTimeInMillis()+"_"+file.getOriginalFilename();
-		System.out.println(fileName);
+		System.out.println("시간 사용 : "+fileName);
 			// b. UUID
 		fileName = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
-		System.out.println(fileName);
+		System.out.println("UUID 사용 : "+fileName);
 		
 		// 3. 파일 저장
 		f = new File(f, fileName);
@@ -70,10 +71,10 @@ public class RegionService {
 		RegionFileDTO rfdto = new RegionFileDTO();
 		rfdto.setFileName(fileName);
 		rfdto.setOriName(file.getOriginalFilename());
+		rfdto.setRegion_id(regionDTO.getRegion_id());
+		result = regionDAO.addFile(rfdto);
 		
-		regionDAO.addFile(rfdto);
-		
-		return 0;//regionDAO.add(regionDTO);
+		return result;
 	}
 	
 	// Update

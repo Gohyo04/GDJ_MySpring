@@ -64,12 +64,15 @@
   
   	<!-- AddFile -->
   	<insert id="addFile" parameterType="RegionFileDTO">
-  		INSERT INTO REGIONFILES VALUES (FILE_SEQ.NEXTVAL, #{region_id}, #{fileName}, #{oriName});
+  		INSERT INTO REGIONFILES VALUES (RE_FL_SEQ.NEXTVAL, #{region_id}, #{fileName}, #{oriName})
   	</insert>
   
   	<!-- Insert -->
   	<insert id="add" parameterType="RegionDTO">
-  		INSERT INTO REGIONS VALUES(EMPLOYEES_SEQ.NEXTVAL,#{region_name})
+  		<selectKey keyProperty="region_id" order="BEFORE" resultType="Long">
+  			SELECT EMPLOYEES_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO REGIONS VALUES(#{region_id},#{region_name})
   	</insert>
   
   	<!-- detail -->
