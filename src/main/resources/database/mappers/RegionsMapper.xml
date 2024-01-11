@@ -64,7 +64,7 @@
   
   	<!-- AddFile -->
   	<insert id="addFile" parameterType="RegionFileDTO">
-  		INSERT INTO REGIONFILES VALUES (RE_FL_SEQ.NEXTVAL, #{region_id}, #{fileName}, #{oriName})
+  		INSERT INTO REGIONFILES VALUES (#{region_id}, RE_FL_SEQ.NEXTVAL, #{fileName}, #{oriName})
   	</insert>
   
   	<!-- Insert -->
@@ -77,9 +77,30 @@
   
   	<!-- detail -->
   	<!-- id는 DAO의 메서드명 -->
-  	<select id="getDetail" resultType="RegionDTO" parameterType="RegionDTO">
-  		SELECT * FROM REGIONS WHERE REGION_ID=#{region_id}
+  	<select id="getDetail" resultMap="getDetailResult" parameterType="RegionDTO">
+  		SELECT * 
+		FROM REGIONS
+			LEFT OUTER JOIN 
+			REGIONFILES 
+		USING(REGION_ID)
+		WHERE REGION_ID = #{region_id}
   	</select>
+  	<!-- type 최종 결과타입  resultMap에서 설정한 이름-->
+  	<resultMap type="RegionDTO" id="getDetailResult">
+  		<!-- PK -->
+  		<!-- column=column명, property="속성명" -->
+  		<id column="region_id" property="region_id"/>
+  		<!-- PK를 제외한 나머지 -->
+  		<result column="REGION_NAME" property="region_name"/>
+  		<!-- 1:1 -->
+  		<association property="regionFileDTO" javaType="RegionFileDTO">
+	  		<!-- PK -->
+	  		<id column="FILENUM" property="fileNum"/>
+	  		<!-- 그외 -->
+	  		<result column="FILENAME" property="fileName"/>
+	  		<result column="ORINAME" property="oriName"/>
+  		</association>
+  	</resultMap>
   	
   	<select id="getList" resultType="RegionDTO" parameterType="Pager">
   		SELECT * FROM 

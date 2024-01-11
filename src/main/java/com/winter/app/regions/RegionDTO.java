@@ -8,7 +8,15 @@ public class RegionDTO {
 	// 4. 멤버변수의 이름과 Datatype은 DB의 TABLE에 있는 컬럼명과 Datatype을 일치시켜야한다.
 	private Long region_id; // Integer == int
 	private String region_name;
+	private RegionFileDTO regionFileDTO;
 	
+	
+	public RegionFileDTO getRegionFileDTO() {
+		return regionFileDTO;
+	}
+	public void setRegionFileDTO(RegionFileDTO regionFileDTO) {
+		this.regionFileDTO = regionFileDTO;
+	}
 	public Long getRegion_id() {
 		return region_id;
 	}
