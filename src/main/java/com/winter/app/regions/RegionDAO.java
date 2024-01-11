@@ -49,4 +49,9 @@ public class RegionDAO {
 		return sqlSession.delete(namespace+"delete",regionDTO);
 	}
 	
+	// 삭제를 위한 조회
+	public List<RegionFileDTO> getListFiles(RegionDTO regionDTO) throws Exception{
+		return sqlSession.selectList(namespace+"getListFiles", regionDTO);
+	}
+	
 }
